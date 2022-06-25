@@ -17,3 +17,5 @@ const getUsers = async (): Promise<User[]> => {
 
 	return users;
 };
+
+export { getUsers };
