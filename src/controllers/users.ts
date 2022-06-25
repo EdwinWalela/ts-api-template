@@ -20,4 +20,4 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
 	let user = await getUserService(req.body.id);
 };
 
-export { getUsers, getUser };
+export default { getUsers, getUser };
