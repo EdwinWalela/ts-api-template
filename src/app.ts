@@ -1,37 +1,19 @@
-import { Request, Response, NextFunction, Express } from 'express';
 import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
 import db from './config/db';
 import userRoutes from './routes/users';
+import logRequest from './middleware/logging';
+import notFound from './middleware/notfound';
 
 const NAMESPACE = 'Server';
-const app: Express = express();
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-/** Logging */
-app.use((req: Request, res: Response, next: NextFunction) => {
-	res.on('finish', () => {
-		logging.info(
-			NAMESPACE,
-			`[${req.method}] ${req.url} [${req.socket.remoteAddress}] [${res.statusCode}]`
-		);
-	});
-
-	next();
-});
-
+app.use(logRequest);
 app.use('/users', userRoutes);
-
-/** Error Handling - 404 */
-app.use((req: Request, res: Response, next: NextFunction) => {
-	const error = new Error('Requested resource not found');
-	return res.status(404).send({
-		msg: error.message,
-	});
-});
+app.use(notFound);
 
 (async () => {
 	try {
