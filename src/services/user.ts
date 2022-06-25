@@ -7,4 +7,10 @@ const getUsersService = async (): Promise<User[]> => {
 	return users;
 };
 
-export { getUsersService };
+const getUserService = async (id: Number): Promise<User> => {
+	let users = await getUsers();
+	users.forEach((user) => {});
+	return users[0];
+};
+
+export { getUsersService, getUserService };
