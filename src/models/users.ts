@@ -1,12 +1,14 @@
 class User {
+	id: Number;
 	fname: string;
 	lname: string;
-	dob: Date;
+	email: string;
 
-	constructor(fname: string, lname: string, dob: Date) {
+	constructor(id: Number, fname: string, lname: string, email: string) {
+		this.id = id;
 		this.fname = fname;
 		this.lname = lname;
-		this.dob = dob;
+		this.email = email;
 	}
 }
 
