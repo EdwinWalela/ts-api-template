@@ -3,6 +3,7 @@ import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
 import db from './config/db';
+import userRoutes from './routes/users';
 
 const NAMESPACE = 'Server';
 const app: Express = express();
@@ -21,6 +22,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 	next();
 });
+
+app.use('/users', userRoutes);
 
 /** Error Handling - 404 */
 app.use((req: Request, res: Response, next: NextFunction) => {
