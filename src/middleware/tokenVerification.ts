@@ -15,6 +15,7 @@ const verifyToken = async (req: Request, res: Response, next: NextFunction) => {
 		}
 		let token: string = bearerToken.split(' ')[1];
 		logger.debug(NAMESPACE, token);
+		//@TODO: Verify token
 		next();
 	} else {
 		return res.status(401).send({
