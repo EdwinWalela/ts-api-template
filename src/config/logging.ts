@@ -10,7 +10,7 @@ const info = (namespace: String, message: String, object?: any) => {
 	}
 };
 
-const debug: Function = (namespace: String, message: String, object?: any) => {
+const debug = (namespace: String, message: String, object?: any) => {
 	if (object) {
 		console.debug(`[${getTimestamp()}] [DEBUG] [${namespace}] ${message} `, object);
 	} else {
@@ -18,7 +18,7 @@ const debug: Function = (namespace: String, message: String, object?: any) => {
 	}
 };
 
-const warn: Function = (namespace: String, message: String, object?: any) => {
+const warn = (namespace: String, message: String, object?: any) => {
 	if (object) {
 		console.warn(`[${getTimestamp()}] [WARN] [${namespace}] ${message} `, object);
 	} else {
@@ -26,7 +26,7 @@ const warn: Function = (namespace: String, message: String, object?: any) => {
 	}
 };
 
-const error: Function = (namespace: String, message: String, object?: any) => {
+const error = (namespace: String, message: String, object?: any) => {
 	if (object) {
 		console.error(`[${getTimestamp()}] [ERROR] [${namespace}] ${message} `, object);
 	} else {
