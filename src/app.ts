@@ -2,9 +2,12 @@ import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
 import db from './config/db';
+/* Routes */
 import userRoutes from './routes/users';
+/* Middleware */
 import logRequest from './middleware/logging';
 import notFound from './middleware/notfound';
+import timeout from './middleware/timeout';
 
 const NAMESPACE = 'Server';
 const app = express();
@@ -24,6 +27,6 @@ app.use(notFound);
 	}
 })();
 
-app.listen(config.httpPort, () => {
+const server = app.listen(config.httpPort, () => {
 	logging.info(NAMESPACE, `Listening for requests on port ${config.httpPort}`);
 });
