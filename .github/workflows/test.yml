@@ -26,5 +26,8 @@ jobs:
             ${{ runner.os }}-node-v${{ matrix.node }}-
       - name: Install Dependencies
         run: npm install
+      - name: tsc
+        uses: icrawl/action-tsc@v1
+        run: npm run build
       - name: Run All Node.js Tests
         run: npm run test
